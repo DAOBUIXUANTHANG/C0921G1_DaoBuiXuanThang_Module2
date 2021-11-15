@@ -1,14 +1,14 @@
 package ss4_lop_va_doi_tuong_trong_java.bai_tap.xay_dung_lop_fan;
 
 public class ClassFan {
-    final int slow = 1, medium = 2, fast = 3;
+    final int SLOW = 1, MEDIUM = 2, FAST = 3;
     int speed;
     private boolean on;
     private double radius;
     private String color;
 
     public ClassFan(){
-        this.speed = slow;
+        this.speed = SLOW;
         this.on = false;
         this.color = "blue";
         this.radius = 5;
@@ -37,7 +37,7 @@ public class ClassFan {
         if (speed < 3){
             this.speed = speed;
         } else {
-            this.speed = fast;
+            this.speed = FAST;
         }
     }
 

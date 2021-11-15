@@ -12,12 +12,18 @@ public class XoaPhanTuKhoiMang {
         System.out.println("Nhap k");
         k = sc.nextInt();
 
+
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == k){
+            if (arr[i] == k && i != (arr.length -1)){
                 indexK = i;
                 for (int j = indexK; j < arr.length-1 ; j++) {
                     arr[j] = arr[j+1];
                 }
+                arr[arr.length - 1] = 0;
+            } else if (arr[i] == k && i == arr.length - 1){
+                arr[i] =0;
+            } else {
+                System.out.println("không có k trong mảng");
             }
         }
 

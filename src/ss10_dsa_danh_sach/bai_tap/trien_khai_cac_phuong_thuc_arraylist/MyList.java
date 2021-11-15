@@ -2,8 +2,6 @@ package ss10_dsa_danh_sach.bai_tap.trien_khai_cac_phuong_thuc_arraylist;
 
 import java.util.Arrays;
 
-import static com.sun.xml.internal.fastinfoset.util.ValueArray.DEFAULT_CAPACITY;
-
 public class MyList<E> {
     int size = 0;
     static final int DEFAULT_CAPACITY = 10;
@@ -51,7 +49,36 @@ public class MyList<E> {
         return elements.length;
     }
 
-    void eClone(){
-        Object e1 =  elements.clone();
+    public void eClone(){
+        MyList<E> clone = new MyList<>(this.elements.length);
+        for (Object cloneI :
+                this.elements) {
+            clone.add((E) cloneI);
+        }
+    }
+
+    public int indexOf(E elements){
+        for (int i = 0; i < size; i++) {
+            if (elements == this.elements[i]){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public boolean contains(E ob){
+        for (int i = 0; i < size; i++) {
+            if (this.elements[i] == ob){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "MyList{" +
+                "elements=" + Arrays.toString(elements) +
+                '}';
     }
 }
