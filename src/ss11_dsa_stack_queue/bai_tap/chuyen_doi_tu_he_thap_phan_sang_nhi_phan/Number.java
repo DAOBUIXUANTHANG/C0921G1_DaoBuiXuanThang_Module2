@@ -11,7 +11,7 @@ public class Number {
         this.number = number;
     }
 
-    public String chuyenDoiSangThapPhan(){
+    public String changeToBinary(){
         do {
             if (number % 2 == 0){
                 stack.push(0);
@@ -20,7 +20,8 @@ public class Number {
                 stack.push(1);
                 number = number / 2;
             }
-        } while (number == 1);
+
+        } while (number != 0);
 
         while (!stack.isEmpty()){
             dauRa = dauRa + stack.pop();

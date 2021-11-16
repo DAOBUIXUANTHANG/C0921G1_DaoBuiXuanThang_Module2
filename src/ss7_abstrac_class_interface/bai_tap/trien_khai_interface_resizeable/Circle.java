@@ -1,6 +1,6 @@
 package ss7_abstrac_class_interface.bai_tap.trien_khai_interface_resizeable;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Resizeable{
     private double radius = 1;
 
     public Circle() {

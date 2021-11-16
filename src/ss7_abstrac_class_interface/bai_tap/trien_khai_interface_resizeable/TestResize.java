@@ -9,15 +9,20 @@ public class TestResize {
         arr[1] = new Rectangle();
         arr[2] = new Square();
 
-
+        System.out.println("truoc khi resize");
         System.out.println(arr[0].toString());
         System.out.println(arr[1].toString());
         System.out.println(arr[2].toString());
 
-        arr[0].resize(30);
-        arr[1].resize(30);
-        arr[2].resize(30);
-
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] instanceof Circle){
+                ((Circle)arr[i]).resize(100);
+            } else if (arr[i] instanceof Rectangle){
+                Rectangle h1 = (Rectangle)arr[i];
+                h1.resize(100);
+            }
+        }
+        System.out.println("sau khi resize");
         System.out.println(arr[0].toString());
         System.out.println(arr[1].toString());
         System.out.println(arr[2].toString());

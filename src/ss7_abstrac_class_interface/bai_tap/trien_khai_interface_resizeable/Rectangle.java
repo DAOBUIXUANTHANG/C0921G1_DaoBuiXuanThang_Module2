@@ -1,6 +1,6 @@
 package ss7_abstrac_class_interface.bai_tap.trien_khai_interface_resizeable;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Resizeable{
     private double width = 1.0;
     private double length = 1.0;
 

@@ -17,10 +17,6 @@ public class Square extends Shape {
         this.size = size;
     }
 
-    @Override
-    public void resize(double per) {
-        this.size = this.size * ((per + 100) / 100);
-    }
 
     @Override
     public double getArena() {
