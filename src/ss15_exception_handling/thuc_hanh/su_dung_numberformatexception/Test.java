@@ -21,7 +21,7 @@ public class Test {
             System.out.println("nhap canh thu ba cua tam giac ");
             c = sc.nextDouble();
 
-            if (a < 0 || b < 0 || c < 0 || (a + b) < c|| (a + c) < b || (b + c) < a){
+            if (a <= 0 || b <= 0 || c <= 0 || (a + b) < c|| (a + c) < b || (b + c) < a){
                 throw new IllegalTriangleException();
             }
         } catch (IllegalTriangleException triangleException){
