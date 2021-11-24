@@ -1,26 +1,25 @@
 package review.service;
 
-import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
-import review.models.Experience;
+import review.models.Fresher;
+import review.models.Intern;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ExperienceList implements CandidateSevic{
-    public static List<Experience> exceptionList = new ArrayList<>();
+public class InternList implements CandidateSevic {
+
+    static List<Intern> internList = new ArrayList<>();
     static {
-        exceptionList.add(new Experience("Aelbrecht", "Stefan", "1990" , "USA", "0001239412", "Stefan@asante.com", 5, "code"));
-        exceptionList.add(new Experience("Aguirre", "Eva", "1997" , "Frank", "0342912658", "Eva@asante.com", 6, "Java"));
-        exceptionList.add(new Experience("Ahlgren", "Maria", "1965" , "UK", "0001239432", "Stefan@asante.com", 5, "PHP"));
-        exceptionList.add(new Experience("Antošová", "Adeleva", "1990" , "USA", "0001322394", "Stefan@asante.com", 5, "C++"));
-        exceptionList.add(new Experience("Dao", "Thang", "2000" , "USA", "0420312394", "Stefan@asante.com", 5, "sleep"));
+        internList.add(new Intern("Madeleine", "Maria", "1990", "Sao paulo", "940394", "Maria@asante.com","java","2022", "CodeGyms"));
+        internList.add(new Intern("Csokán", "Babett", "1990", "Sao paulo", "940394", "Babett@asante.com","java","2022", "CodeGyms"));
+        internList.add(new Intern("Joana", "Filipa", "1990", "Sao paulo", "940394", "Maria@asante.com","java","2022", "CodeGyms"));
     }
 
     @Override
     public void addNew() {
         Scanner sc = new Scanner(System.in);
-        Experience newExp = new Experience();
+        Intern newExp = new Intern();
 
         System.out.println("enter fist name ");
         newExp.setFistName(sc.nextLine());
@@ -40,55 +39,53 @@ public class ExperienceList implements CandidateSevic{
         System.out.println("enter email ");
         newExp.setEmail(sc.nextLine());
 
-        System.out.println("enter year of experience ");
-        newExp.setYearOfExp(sc.nextInt());
+        System.out.println("enter majors ");
+        newExp.setMajors(sc.nextLine());
 
-        System.out.println("enter professional skill ");
-        newExp.setProSkill(sc.nextLine());
+        System.out.println("enter semester ");
+        newExp.setSemester(sc.nextLine());
 
-        display();
-
+        System.out.println("enter university ");
+        newExp.setUniversity(sc.nextLine());
     }
 
     @Override
     public void search() {
-
         System.out.println("enter last name ");
         Scanner sc = new Scanner(System.in);
+
         String input = sc.nextLine();
         boolean check = this.check(input);
+
         if (check){
-            for (Experience e :
-                    exceptionList) {
+            for (Intern e :
+                    internList) {
                 if (input.equals(e.getLastName())) {
                     System.out.println(e.toString());
                 }
             }
         } else {
-            System.out.println("cant find result");
+            System.out.println("k tim thay");
         }
-
 
     }
 
     @Override
     public void display() {
-        for (Experience e :
-                exceptionList) {
+        for (Intern e :
+                internList) {
             System.out.println(e);
         }
     }
 
     @Override
     public boolean check(String lastName) {
-
-        for (Experience e :
-                exceptionList) {
+        for (Intern e :
+                internList) {
             if (lastName.equals(e.getLastName())) {
                 return true;
             }
         }
         return false;
     }
-
 }
