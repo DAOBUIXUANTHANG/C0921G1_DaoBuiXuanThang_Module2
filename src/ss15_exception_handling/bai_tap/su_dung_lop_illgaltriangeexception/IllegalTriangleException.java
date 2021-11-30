@@ -11,6 +11,6 @@ public class IllegalTriangleException extends Exception {
 
     @Override
     public String toString() {
-        return "nhap sai IllegalTriangleException{}";
+        return "nhap sai 3 canh cua tam giac";
     }
 }
