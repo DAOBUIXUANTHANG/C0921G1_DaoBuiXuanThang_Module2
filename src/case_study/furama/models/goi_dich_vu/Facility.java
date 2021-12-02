@@ -1,13 +1,15 @@
 package case_study.furama.models.goi_dich_vu;
 
 public abstract class Facility {
+    private String idSevice;
     private String name;
     private double area;
     private double price;
     private int maxPerson;
     private String stye;
 
-    public Facility(String name, double area, double price, int maxPerson, String stye) {
+    public Facility(String idSevice, String name, double area, double price, int maxPerson, String stye) {
+        this.idSevice = idSevice;
         this.name = name;
         this.area = area;
         this.price = price;
@@ -16,6 +18,14 @@ public abstract class Facility {
     }
 
     public Facility() {
+    }
+
+    public String getIdSevice() {
+        return idSevice;
+    }
+
+    public void setIdSevice(String idSevice) {
+        this.idSevice = idSevice;
     }
 
     public String getName() {

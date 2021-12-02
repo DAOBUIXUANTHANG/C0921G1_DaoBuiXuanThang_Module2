@@ -8,8 +8,8 @@ public class Vila extends Facility {
     public Vila() {
     }
 
-    public Vila(String name, double area, double price, int maxPerson, String stye, String tieuChuanPhong, double areaPool, int numFloor) {
-        super(name, area, price, maxPerson, stye);
+    public Vila(String idSevice, String name, double area, double price, int maxPerson, String stye, String tieuChuanPhong, double areaPool, int numFloor) {
+        super(idSevice, name, area, price, maxPerson, stye);
         this.tieuChuanPhong = tieuChuanPhong;
         this.areaPool = areaPool;
         this.numFloor = numFloor;

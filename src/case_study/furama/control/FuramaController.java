@@ -11,16 +11,64 @@ public class FuramaController {
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     CustomerServiceImpl customerService = new CustomerServiceImpl();
 
+    int choiceSub;
+
     public void displayMenu(){
         while (choice != 6){
             mainMenu();
             choice = Integer.parseInt(sc.nextLine());
             switch (choice){
+
                 case 1:
-                    employeeManagement();
+                    do {
+                        System.out.println("1. Display list Employee");
+                        System.out.println("2. Add new Employee");
+                        System.out.println("3. Edit Employee");
+                        System.out.println("4. Return main menu");
+                        choiceSub = Integer.parseInt(sc.nextLine());
+                        switch (choiceSub){
+                            case 1:
+                                employeeService.displayList();
+                                break;
+                            case 2:
+                                employeeService.addNew();
+                                break;
+                            case 3:
+                                employeeService.edit();
+                                break;
+                            case 4:
+                                break;
+                            default:
+                                System.out.println("nhap sai lua chon");
+                        }
+                    } while (choiceSub != 4);
                     break;
+
                 case 2:
-                    customerManagement();
+                    do {
+                        System.out.println("1. Display list Customer");
+                        System.out.println("2. Add new Customer");
+                        System.out.println("3. Edit Customer");
+                        System.out.println("4. Return main menu");
+
+                        choiceSub = Integer.parseInt(sc.nextLine());
+
+                        switch (choiceSub){
+                            case 1:
+                                customerService.displayList();
+                                break;
+                            case 2:
+                                customerService.addNew();
+                                break;
+                            case 3:
+                                customerService.edit();
+                                break;
+                            case 4:
+                                break;
+                            default:
+                                System.out.println("nhap sai lua chon");
+                        }
+                    } while (choiceSub != 4);
                     break;
                 case 3:
                     facilityManagement();
@@ -51,57 +99,10 @@ public class FuramaController {
     }
 
     public void employeeManagement(){
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
 
-        System.out.println("1. Display list Employee");
-        System.out.println("2. Add new Employee");
-        System.out.println("3. Edit Employee");
-        System.out.println("4. Return main menu");
-
-        switch (choice){
-            case 1:
-                employeeService.displayList();
-                break;
-            case 2:
-                employeeService.addNew();
-                break;
-            case 3:
-                employeeService.edit();
-                break;
-            case 4:
-                mainMenu();
-                break;
-            default:
-                System.out.println("nhap sai lua chon");
-        }
     }
 
     public void customerManagement(){
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-
-        System.out.println("1. Display list Customer");
-        System.out.println("2. Add new Customer");
-        System.out.println("3. Edit Customer");
-        System.out.println("4. Return main menu");
-
-        switch (choice){
-            case 1:
-                customerService.displayList();
-                break;
-            case 2:
-                customerService.addNew();
-                break;
-            case 3:
-                customerService.edit();
-                break;
-            case 4:
-                mainMenu();
-                break;
-            default:
-                System.out.println("nhap sai lua chon");
-        }
     }
 
     public void facilityManagement(){
