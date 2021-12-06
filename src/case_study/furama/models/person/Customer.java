@@ -41,10 +41,10 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "maKhachHang='" + maKhachHang + '\'' +
-                ", loaiKhach='" + loaiKhach + '\'' +
-                ", diaChi='" + diaChi + '\'' +
-                "} " + super.toString();
+        return getHoTen() + "," + getNgaySinh()
+                + "," + getGioiTinh() + "," + getCmnd()
+                + "," + getSdt() + "," + getEmail()
+                + "," + getMaKhachHang() + "," + getLoaiKhach()
+                + "," + getDiaChi();
     }
 }

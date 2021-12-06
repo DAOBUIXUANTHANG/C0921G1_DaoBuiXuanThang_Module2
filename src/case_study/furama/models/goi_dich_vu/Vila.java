@@ -1,5 +1,7 @@
 package case_study.furama.models.goi_dich_vu;
 
+import java.util.Objects;
+
 public class Vila extends Facility {
     private String tieuChuanPhong;
     private double areaPool;
@@ -43,5 +45,18 @@ public class Vila extends Facility {
 
     public void setNumFloor(int numFloor) {
         this.numFloor = numFloor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vila vila = (Vila) o;
+        return Objects.equals(getIdSevice(), vila.getIdSevice());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdSevice());
     }
 }

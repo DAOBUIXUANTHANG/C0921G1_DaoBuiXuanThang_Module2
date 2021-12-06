@@ -12,6 +12,9 @@ public class FacilityRegex {
     private static final String ROOM_REGEX = "^(SVRO)-[\\d]{4}$";
     private static final String NAMEFAC_REGEX = "^[A-Z][a-z]*([\\s][A-Z]([a-z])*)*$";
 
+    private FacilityRegex() {
+    }
+
     // kiem tra mã của vila,house room
     public static boolean vilaRegex(String regex){
         pattern = Pattern.compile(VILA_REGEX);

@@ -4,6 +4,7 @@ import case_study.furama.models.goi_dich_vu.Facility;
 import case_study.furama.models.goi_dich_vu.House;
 import case_study.furama.models.goi_dich_vu.Room;
 import case_study.furama.models.goi_dich_vu.Vila;
+import case_study.furama.regex.FacilityRegex;
 import case_study.furama.service.FacilityService;
 
 import java.util.LinkedHashMap;
@@ -35,61 +36,160 @@ public class FacilityServiceImpl implements FacilityService {
         Scanner scanner = new Scanner(System.in);
         House house = new House();
 
-        System.out.println("xin ma dich vu cua house");
-        String idServer = scanner.nextLine();
+        String idService ;
+        do {
+            System.out.println("xin ma dich vu cua house");
+            idService = scanner.nextLine();
+            if (FacilityRegex.houseRegex(idService)){
+                house.setIdSevice(idService);
+                break;
+            } else {
+                System.out.println("xin nhap dung ma dich vu : ( SSRO-XXXX, XXXX là mã số dich vụ )");
+            };
+        } while (true);
 
-        System.out.println("xin nhap ten cua house");
-        String tenVila = scanner.nextLine();
+        String tenHou;
+        do {
+            System.out.println("xin nhap ten cua house");
+            tenHou = scanner.nextLine();
+            if (FacilityRegex.nameFacilityRegex(tenHou)){
+                house.setIdSevice(tenHou);
+                break;
+            } else {
+                System.out.println("xin nhap dung ten");
+            };
+        } while (true);
 
-        System.out.println("xin dien tich su dung cua house");
-        double area = Double.parseDouble(scanner.nextLine());
+        // kiểm tra và nhập diện tích nhà
+        double area;
+        do {
+            System.out.println("xin dien tich su dung cua house (đơn vi m2)");
+            area = Double.parseDouble(scanner.nextLine());
+            if (area > 30){
+                house.setArea(area);
+                break;
+            } else {
+                System.out.println("xin nhap dung dien tich su dung (dien tich room > 30 m2)");
+            }
 
-        System.out.println("xin nhap gia thue cua house");
-        double price = Double.parseDouble(scanner.nextLine());
+        } while (true);
 
-        System.out.println("xin nhap so nguoi toi da co the o trong house");
-        int maxPer = Integer.parseInt(scanner.nextLine());
+        // kiểm tra và nhập giá thuê
+        double price;
+        do {
+            System.out.println("xin nhap gia thue cua House");
+            price = Double.parseDouble(scanner.nextLine());
+            if (price > 0){
+                house.setPrice(price);
+                break;
+            } else {
+                System.out.println("nhap sai");
+            }
+        } while (true);
+
+        // kiểm tra và nhập số người
+        int maxPer;
+        do {
+            System.out.println("xin nhap so nguoi toi da co the o trong Room");
+            maxPer = Integer.parseInt(scanner.nextLine());
+            if (maxPer > 0 && maxPer < 20){
+                house.setMaxPerson(maxPer);
+                break;
+            } else {
+                System.out.println("xin nhap dung so luong nguoi ( 0 < so nguoi < 20 )");
+            }
+        } while (true);
 
         System.out.println("xin nhap hinh thuc thue cua house(nam/ thang/ ngay/ gio )");
         String date = scanner.nextLine();
+        house.setStye(date);
 
         System.out.println("xin nhap tieu chuan cua house");
         String tieuChuan = scanner.nextLine();
+        house.setTieuChuanPhong(tieuChuan);
 
         System.out.println("xin nhap dien so tầng cua house");
         int soTang = Integer.parseInt(scanner.nextLine());
-
-
-
+        house.setNumFloor(soTang);
         // chua cai dat compra & hashcode cho class house
     }
 
     @Override
     public void addRoom() {
         Scanner scanner = new Scanner(System.in);
+        Room room = new Room();
 
-        System.out.println("xin ma dich vu cua room");
-        String idService = scanner.nextLine();
+        // kiểm tra và nhập mã dịch vụ
+        String idService;
+        do {
+            System.out.println("xin ma dich vu cua room");
+            idService = scanner.nextLine();
+            if (FacilityRegex.roomRegex(idService)){
+                room.setIdSevice(idService);
+                break;
+            } else {
+                System.out.println("xin nhap dung ma dich vu : ( SSRO-XXXX, XXXX là mã số dich vụ )");
+            };
+        } while (true);
 
-        System.out.println("xin nhap ten cua Room");
-        String tenVila = scanner.nextLine();
+        // kiểm tra và nhập tên phòng
+        String tenRoom;
+        do {
+            System.out.println("xin nhap ten cua Room");
+            tenRoom = scanner.nextLine();
+            if (FacilityRegex.nameFacilityRegex(tenRoom)){
+                room.setIdSevice(tenRoom);
+                break;
+            } else {
+                System.out.println("xin nhap dung ten");
+            };
+        } while (true);
 
-        System.out.println("xin dien tich su dung cua Room");
-        double area = Double.parseDouble(scanner.nextLine());
+        // kiểm tra và nhập diện tích phòng
+        double area;
+        do {
+            System.out.println("xin dien tich su dung cua Room (đơn vi m2)");
+            area = Double.parseDouble(scanner.nextLine());
+            if (area > 30){
+                room.setArea(area);
+                break;
+            } else {
+                System.out.println("xin nhap dung dien tich su dung (dien tich room > 30 m2)");
+            }
 
-        System.out.println("xin nhap gia thue cua Room");
-        double price = Double.parseDouble(scanner.nextLine());
+        } while (true);
 
-        System.out.println("xin nhap so nguoi toi da co the o trong Room");
-        int maxPer = Integer.parseInt(scanner.nextLine());
+        // kiểm tra và nhập giá thuê
+        double price;
+        do {
+            System.out.println("xin nhap gia thue cua Room");
+            price = Double.parseDouble(scanner.nextLine());
+            if (price > 0){
+                room.setPrice(price);
+                break;
+            }
+        } while (true);
+
+        // kiểm tra và nhập số người
+        int maxPer;
+        do {
+            System.out.println("xin nhap so nguoi toi da co the o trong Room");
+            maxPer = Integer.parseInt(scanner.nextLine());
+            if (maxPer > 0 && maxPer < 20){
+                room.setMaxPerson(maxPer);
+                break;
+            } else {
+                System.out.println("xin nhap dung so luong nguoi ( 0 < so nguoi < 20 )");
+            }
+        } while (true);
 
         System.out.println("xin nhap hinh thuc thue cua Room(nam/ thang/ ngay/ gio )");
         String date = scanner.nextLine();
+        room.setStye(date);
 
         System.out.println("xin nhap dien dich vu mien phi ");
         String dichVuMP = scanner.nextLine();
-
-        Room room = new Room(idService,tenVila,area,price,maxPer,date,dichVuMP);
+        room.setDichVuMienPhi(dichVuMP);
         // chua cai dat compra & hashcode cho class house
     }
 
@@ -98,32 +198,103 @@ public class FacilityServiceImpl implements FacilityService {
         Scanner scanner = new Scanner(System.in);
         Vila vila = new Vila();
 
-        System.out.println("xin ma dich vu cua room");
-        String idServer = scanner.nextLine();
+        // kiểm tra và nhập mã dịch vụ
+        String idService;
+        do {
+            System.out.println("xin ma dich vu cua vila");
+            idService = scanner.nextLine();
+            if (FacilityRegex.roomRegex(idService)){
+                vila.setIdSevice(idService);
+                break;
+            } else {
+                System.out.println("xin nhap dung ma dich vu : ( SSVL-XXXX, XXXX là mã số dich vụ )");
+            };
+        } while (true);
 
-        System.out.println("xin nhap ten cua vila");
-        String tenVila = scanner.nextLine();
+        // kiểm tra và nhập tên vila
+        String tenRoom;
+        do {
+            System.out.println("xin nhap ten cua Vila");
+            tenRoom = scanner.nextLine();
+            if (FacilityRegex.nameFacilityRegex(tenRoom)){
+                vila.setIdSevice(tenRoom);
+                break;
+            } else {
+                System.out.println("xin nhap dung ten");
+            };
+        } while (true);
 
-        System.out.println("xin dien tich su dung cua vila");
-        double area = Double.parseDouble(scanner.nextLine());
+        // kiểm tra và nhập diện tích phòng
+        double area;
+        do {
+            System.out.println("xin dien tich su dung cua Vila (đơn vi m2)");
+            area = Double.parseDouble(scanner.nextLine());
+            if (area > 30){
+                vila.setArea(area);
+                break;
+            } else {
+                System.out.println("xin nhap dung dien tich su dung (dien tich Vila > 30 m2)");
+            }
 
-        System.out.println("xin nhap gia thue cua vila");
-        double price = Double.parseDouble(scanner.nextLine());
+        } while (true);
 
-        System.out.println("xin nhap so nguoi toi da co the o trong vila");
-        int maxPer = Integer.parseInt(scanner.nextLine());
+        // kiểm tra và nhập giá thuê
+        double price;
+        do {
+            System.out.println("xin nhap gia thue cua Vila");
+            price = Double.parseDouble(scanner.nextLine());
+            if (price > 0){
+                vila.setPrice(price);
+                break;
+            }
+        } while (true);
+
+        // kiểm tra và nhập số người
+        int maxPer;
+        do {
+            System.out.println("xin nhap so nguoi toi da co the o trong Vila");
+            maxPer = Integer.parseInt(scanner.nextLine());
+            if (maxPer > 0 && maxPer < 20){
+                vila.setMaxPerson(maxPer);
+                break;
+            } else {
+                System.out.println("xin nhap dung so luong nguoi ( 0 < so nguoi < 20 )");
+            }
+        } while (true);
 
         System.out.println("xin nhap hinh thuc thue cua vila (nam/ thang/ ngay/ gio )");
         String date = scanner.nextLine();
+        vila.setStye(date);
 
         System.out.println("xin nhap tieu chuan cua vila");
         String tieuChuan = scanner.nextLine();
+        vila.setTieuChuanPhong(tieuChuan);
 
-        System.out.println("xin nhap dien tích hồ bơi cua vila");
-        double hoBoi = Double.parseDouble(scanner.nextLine());
 
-        System.out.println("xin nhap dien so tầng cua vila");
-        int soTang = Integer.parseInt(scanner.nextLine());
+        // kiểm tra diện tích hồ bơi
+        double areaPool;
+        do {
+            System.out.println("xin nhap dien tích hồ bơi cua vila");
+            areaPool = Double.parseDouble(scanner.nextLine());
+            if (areaPool > 30){
+                vila.setAreaPool(areaPool);
+                break;
+            } else {
+                System.out.println("xin nhap dung dien tich su dung (dien tich Vila > 30 m2)");
+            }
+        } while (true);
+
+        int soTang;
+        do {
+            System.out.println("xin nhap dien so tầng cua vila");
+            soTang = Integer.parseInt(scanner.nextLine());
+            if (soTang > 0) {
+                vila.setNumFloor(soTang);
+                break;
+            } else {
+                System.out.println(" xin nhap dung so tang");
+            }
+        } while (true);
 
         // chua cai dat compra & hashcode cho class Vila
     }

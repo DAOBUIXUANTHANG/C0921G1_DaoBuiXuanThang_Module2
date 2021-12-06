@@ -1,5 +1,7 @@
 package case_study.furama.models.goi_dich_vu;
 
+import java.util.Objects;
+
 public class Room extends Facility {
     private String dichVuMienPhi;
 
@@ -21,5 +23,18 @@ public class Room extends Facility {
 
     public void setDichVuMienPhi(String dichVuMienPhi) {
         this.dichVuMienPhi = dichVuMienPhi;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return Objects.equals(getIdSevice(), room.getIdSevice());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdSevice());
     }
 }

@@ -51,11 +51,14 @@ public class Employee extends Person{
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "maNhanVien='" + maNhanVien + '\'' +
-                ", trinhDo='" + trinhDo + '\'' +
-                ", viTri='" + viTri + '\'' +
-                ", luong=" + luong +
-                "} " + super.toString();
+        return getHoTen() + "," + getNgaySinh() + ","
+                + getGioiTinh() + ","
+                + getCmnd() + ","
+                + getSdt() + ","
+                + getEmail() + ","
+                + getMaNhanVien() + ","
+                + getTrinhDo() + ","
+                + getViTri() + ","
+                + getLuong() ;
     }
 }

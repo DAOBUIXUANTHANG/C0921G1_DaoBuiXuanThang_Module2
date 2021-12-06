@@ -2,6 +2,7 @@ package case_study.furama.control;
 
 import case_study.furama.service.imp.CustomerServiceImpl;
 import case_study.furama.service.imp.EmployeeServiceImpl;
+import case_study.furama.service.imp.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class FuramaController {
     public int choice;
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     CustomerServiceImpl customerService = new CustomerServiceImpl();
+    FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
     int choiceSub;
 
@@ -71,7 +73,54 @@ public class FuramaController {
                     } while (choiceSub != 4);
                     break;
                 case 3:
-                    facilityManagement();
+
+                    do {
+                        System.out.println("1. Display list Facility");
+                        System.out.println("2. Add new Facility");
+                        System.out.println("3. Display list facility maintenance");
+                        System.out.println("4. Return main menu");
+                        choiceSub = sc.nextInt();
+                        switch (choiceSub){
+                            case 1:
+                                facilityService.displayList();
+                                break;
+                            case 2:
+                                int choicesub2 = 0;
+                                do {
+                                    System.out.println("Mời nhập 1 đến 4 để chọn:");
+                                    System.out.println("1. addVilla");
+                                    System.out.println("2. addRoom");
+                                    System.out.println("3. addHouse");
+                                    System.out.println("4. Return menu");
+                                    choicesub2 = Integer.parseInt(sc.nextLine());
+                                    switch (choicesub2){
+                                        case 1:
+                                            facilityService.addVila();
+                                            break;
+                                        case 2:
+                                            facilityService.addRoom();
+                                            break;
+                                        case 3:
+                                            facilityService.addHouse();
+                                            break;
+                                        case 4:
+                                            break;
+                                    }
+                                    break;
+                                } while (choicesub2 != 4);
+                                break;
+                            case 3:
+                                System.out.println("chuc nang chua duoc them vao");
+                                System.out.println("================");
+                                break;
+                            case 4:
+                                break;
+                            default:
+                                System.out.println("xin nhap dung lenh");
+                                System.out.println("================");
+                        }
+
+                    } while (choiceSub != 4);
                     break;
                 case 4:
                     bookingManagement();
